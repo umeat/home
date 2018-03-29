@@ -28,61 +28,40 @@ XTerm*VT100.charClass: 33:48,35:48,37:48,42:48,45-47:48,64:48,95:48,126:48
 !xterm*visualBell:         off
 xterm*highlightSelection: true
 
-! solarized
+!Baskerville - Count Von Count
+*background:  #000000
+*foreground:  #919191
 
-#define S_base03        #002b36
-#define S_base02        #073642
-#define S_base01        #586e75
-#define S_base00        #657b83
-#define S_base0         #839496
-#define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
 
-*background:            S_base03
-*foreground:            S_base0
-*fadeColor:             S_base03
-*cursorColor:           S_base1
-*pointerColorBackground:S_base01
-*pointerColorForeground:S_base1
+! BLACK
+*color0:      #303030
+*color8:      #5E5E5E
 
-#define S_yellow        #b58900
-#define S_orange        #cb4b16
-#define S_red           #dc322f
-#define S_magenta       #d33682
-#define S_violet        #6c71c4
-#define S_blue          #268bd2
-#define S_cyan          #2aa198
-#define S_green         #859900
+! WHITE
+*color7:      #C6C6C6
+*color15:     #FFFFFF
 
-!! black dark/light
-*color0:                S_base02
-*color8:                S_base03
+! RED
+*color1:      #C10023
+*color9:      #FF8781
 
-!! red dark/light
-*color1:                S_red
-*color9:                S_orange
+! YELLOW
+*color3:      #B51D2C
+*color11:     #FF948B
 
-!! green dark/light
-*color2:                S_green
-*color10:               S_base01
+! GREEN
+*color2:      #A83334
+*color10:     #FFA095
 
-!! yellow dark/light
-*color3:                S_yellow
-*color11:               S_base00
+! CYAN
+*color6:      #9A413D
+*color14:     #FFAAA0
 
-!! blue dark/light
-*color4:                S_blue
-*color12:               S_base0
+! BLUE
+*color4:      #8C4B46
+*color12:     #FEB2AA
 
-!! magenta dark/light
-*color5:                S_magenta
-*color13:               S_violet
+! MAGENTA
+*color5:      #7D534F
+*color13:     #EBBBB5
 
-!! cyan dark/light
-*color6:                S_cyan
-*color14:               S_base1
-
-!! white dark/light
-*color7:                S_base2
-*color15:               S_base3
