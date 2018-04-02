@@ -10,8 +10,12 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+  nixpkgs.config.pulseaudio = true;
+
   networking.hostName = "NicksOS";
-  networking.proxy.default = "http://proxy.inno.lan:3128";
+#  networking.proxy.default = "http://proxy.inno.lan:3128";
 
   virtualisation.docker.enable = true;
 
@@ -36,13 +40,14 @@
     haskellPackages.xmonad-contrib
     haskellPackages.xmonad-extras
     dmenu
+    pulseaudioFull
   ];
 
   users.extraUsers.breadedboy = {
     password = "change-me";
     isNormalUser = true;
     home = "/home/breadedboy";
-    extraGroups = [ "wheel" "docker" "networkmanager" ];
+    extraGroups = [ "wheel" "docker" "networkmanager" "audio" "video" ];
   };
 
   system.stateVersion = "17.09";
