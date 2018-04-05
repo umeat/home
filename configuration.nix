@@ -12,10 +12,9 @@
 
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
-  nixpkgs.config.pulseaudio = true;
 
   networking.hostName = "NicksOS";
-#  networking.proxy.default = "http://proxy.inno.lan:3128";
+  networking.proxy.default = "http://proxy.inno.lan:3128";
 
   virtualisation.docker.enable = true;
 
@@ -25,6 +24,8 @@
   };
 
   time.timeZone = "Australia/Canberra";
+
+  nixpkgs.config = import ./nixpkgs-config.nix;
 
   environment.systemPackages = with pkgs; [
     wget 
@@ -41,6 +42,10 @@
     haskellPackages.xmonad-extras
     dmenu
     pulseaudioFull
+    eclipse-ee-47
+    jdk8
+    gcc
+    gnumake
   ];
 
   users.extraUsers.breadedboy = {
