@@ -28,8 +28,8 @@ main = do
         ((mod1Mask, xK_p), spawn "dmenu_run -fn inconsolata-18")
         , ((mod1Mask, xK_apostrophe), sendMessage ToggleStruts)
         , ((0, xF86XK_AudioMute), spawn "amixer -q set Master toggle")
-        , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set Master 5+")
-        , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q set Master 5-")
+        , ((0, xF86XK_AudioRaiseVolume), spawn "amixer -q set Master 5%+")
+        , ((0, xF86XK_AudioLowerVolume), spawn "amixer -q set Master 5%-")
         , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
         , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
         ]
