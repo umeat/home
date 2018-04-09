@@ -21,8 +21,8 @@ main = do
             { ppOutput = hPutStrLn xmproc
             , ppTitle = xmobarColor "grey" "" . shorten 53
             }
-        , focusedBorderColor = "#9d1f21"
-        , normalBorderColor = "#1d1f21"
+        , focusedBorderColor = "#1d1f21"
+        , normalBorderColor = "#000000"
         } `additionalKeys`
         [
         ((mod1Mask, xK_p), spawn "dmenu_run -fn inconsolata-18")
