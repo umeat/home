@@ -4,7 +4,7 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=12:medium:antialias=true"
        , position = TopW L 100
        , commands = [ Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Memory: <usedratio>%"] 10
-                    , Run Network "wlp4s0" ["-t","Network: <rx>|<tx>","-S", "True"] 10
+                    , Run Network "wlp2s0" ["-t","Network: <rx>|<tx>","-S", "True"] 10
 					, Run Battery
 						[ "--template" , "Battery: <acstatus>"
                         , "--Low"      , "10"        -- units: %

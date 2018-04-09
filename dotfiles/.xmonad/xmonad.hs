@@ -21,7 +21,7 @@ main = do
             { ppOutput = hPutStrLn xmproc
             , ppTitle = xmobarColor "grey" "" . shorten 53
             }
-        , focusedBorderColor = "#2b6651"
+        , focusedBorderColor = "#9d1f21"
         , normalBorderColor = "#1d1f21"
         } `additionalKeys`
         [
