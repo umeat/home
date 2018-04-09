@@ -25,7 +25,7 @@
 
   time.timeZone = "Australia/Canberra";
 
-  #nixpkgs.config = import ./nixpkgs-config.nix;
+  nixpkgs.config = import ./nixpkgs-config.nix;
 
   environment.systemPackages = with pkgs; [
     wget 
@@ -33,7 +33,7 @@
     firefox
     zip
     git
-    #(python36.withPackages(ps: with ps; [ numpy toolz pip ]))
+    (python36.withPackages(ps: with ps; [ numpy toolz pip ]))
     haskellPackages.X11
     haskellPackages.xmobar
     haskellPackages.xmonad
@@ -41,17 +41,17 @@
     haskellPackages.xmonad-extras
     dmenu
     pulseaudioFull
-    #eclipse-ee-47
-    #jdk8
-    #gcc
-    #gnumake
+    eclipse-ee-47
+    jdk8
+    gcc
+    gnumake
   ];
 
   users.extraUsers.brandon = {
     password = "change-me";
     isNormalUser = true;
     home = "/home/brandon";
-    extraGroups = [ "wheel" "docker" "networkmanager" "audio" "video" ];
+    extraGroups = [ "wheel" "docker" "networkmanager" ];
   };
 
   system.stateVersion = "17.09";
