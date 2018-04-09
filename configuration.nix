@@ -6,15 +6,15 @@
       ./hardware-configuration.nix
     ];
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
-  networking.hostName = "NicksOS";
-  networking.proxy.default = "http://proxy.inno.lan:3128";
+  networking.hostName = "nosleep";
+  networking.wireless.enable = true;
+  #networking.proxy.default = "http://proxy.inno.lan:3128";
 
   virtualisation.docker.enable = true;
 
@@ -25,7 +25,7 @@
 
   time.timeZone = "Australia/Canberra";
 
-  nixpkgs.config = import ./nixpkgs-config.nix;
+  #nixpkgs.config = import ./nixpkgs-config.nix;
 
   environment.systemPackages = with pkgs; [
     wget 
@@ -33,8 +33,7 @@
     firefox
     zip
     git
-    (python36.withPackages(ps: with ps; [ numpy toolz pip ]))
-    linuxPackages.virtualboxGuestAdditions
+    #(python36.withPackages(ps: with ps; [ numpy toolz pip ]))
     haskellPackages.X11
     haskellPackages.xmobar
     haskellPackages.xmonad
@@ -42,16 +41,16 @@
     haskellPackages.xmonad-extras
     dmenu
     pulseaudioFull
-    eclipse-ee-47
-    jdk8
-    gcc
-    gnumake
+    #eclipse-ee-47
+    #jdk8
+    #gcc
+    #gnumake
   ];
 
-  users.extraUsers.breadedboy = {
+  users.extraUsers.brandon = {
     password = "change-me";
     isNormalUser = true;
-    home = "/home/breadedboy";
+    home = "/home/brandon";
     extraGroups = [ "wheel" "docker" "networkmanager" "audio" "video" ];
   };
 
@@ -60,8 +59,30 @@
   services.xserver = {
     enable = true;
 
+    synaptics = {
+      enable = true;
+      tapButtons = true;
+      fingersMap = [1 3 2];
+      horizTwoFingerScroll = true;
+      vertTwoFingerScroll = true;
+      scrollDelta = 107;
+      accelFactor = "0.1";
+      twoFingerScroll = true;
+
+      # palm detection
+      # https://askubuntu.com/questions/229311/synaptics-touchpad-solving-2-finger-problem-triggered-by-resting-palm/772103#772103
+      palmDetect = true;
+      palmMinWidth = 10;
+      palmMinZ = 0;
+      additionalOptions = ''
+        # https://askubuntu.com/a/772103
+        Option "AreaLeftEdge" "2000"
+        Option "AreaRightEdge" "5500"
+      '';
+    };
+
     displayManager.slim.enable = true;
-    displayManager.slim.defaultUser = "breadedboy";
+    displayManager.slim.defaultUser = "brandon";
 
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
