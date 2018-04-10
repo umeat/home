@@ -14,7 +14,7 @@
 
   networking.hostName = "nosleep";
   networking.wireless.enable = true;
-  #networking.proxy.default = "http://proxy.inno.lan:3128";
+  networking.proxy.default = "http://proxy.inno.lan:3128";
 
   virtualisation.docker.enable = true;
 
@@ -39,6 +39,7 @@
     haskellPackages.xmonad
     haskellPackages.xmonad-contrib
     haskellPackages.xmonad-extras
+    xorg.xbacklight
     dmenu
     pulseaudioFull
     eclipse-ee-47
@@ -51,7 +52,7 @@
     password = "change-me";
     isNormalUser = true;
     home = "/home/brandon";
-    extraGroups = [ "wheel" "docker" "networkmanager" ];
+    extraGroups = [ "wheel" "docker" ];
   };
 
   system.stateVersion = "17.09";
