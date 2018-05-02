@@ -1,5 +1,10 @@
 PATH=/home/brandon/bin:$PATH
 
+alias calc=qalculate-gtk
+
+# https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+source ~/.config/git-completion.bash
+
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
