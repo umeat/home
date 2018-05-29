@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+
 {
   imports =
     [
@@ -11,6 +12,8 @@
 
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
+
+  hardware.opengl.driSupport32Bit = true;
 
   networking.hostName = "nosleep";
   networking.wireless.enable = true;
@@ -46,6 +49,9 @@
     jdk8
     gcc
     gnumake
+    steam
+    discord
+    fzf
   ];
 
   users.extraUsers.brandon = {
