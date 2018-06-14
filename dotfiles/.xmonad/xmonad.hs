@@ -20,9 +20,11 @@ main = do
         , logHook = dynamicLogWithPP xmobarPP
             { ppOutput = hPutStrLn xmproc
             , ppTitle = xmobarColor "grey" "" . shorten 53
+            , ppCurrent = wrap "<fc=#919191>[</fc>" "<fc=#919191>]</fc>" . xmobarColor "#FF8781" "" 
             }
         , focusedBorderColor = "#1d1f21"
         , normalBorderColor = "#000000"
+        , focusFollowsMouse = False
         } `additionalKeys`
         [
         ((mod1Mask, xK_p), spawn "dmenu_run -fn inconsolata-18")
@@ -33,5 +35,7 @@ main = do
         , ((0, xF86XK_AudioMicMute), spawn "amixer -q set Capture toggle")
         , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
         , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
+        , ((0, xK_Print), spawn "scrot /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
+        , ((mod1Mask, xK_Print), spawn "scrot -s /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
         ]
 
