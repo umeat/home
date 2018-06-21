@@ -20,9 +20,20 @@ call plug#end()
 set rtp+=~/.vim/plugged/fzf
 nnoremap <Leader>p :FZF<CR>
 
+" eclim
+let g:EclimLoggingDisabled = 1
+let g:EclimMakeLCD = 1
+
+" vim tabs
+map <C-t> :tabnew<CR>
+map <Tab> :tabnext<CR>
+
 " Nul is C-Space
 " switch between splits
 map <Nul> <C-w>w
+
+" search highlighting
+nnoremap <Leader>/ :noh<CR>
 
 " lightline scheme
 set laststatus=2
