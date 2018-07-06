@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 
-
 {
   imports =
     [
@@ -17,7 +16,7 @@
 
   networking.hostName = "nosleep";
   networking.wireless.enable = true;
-  networking.proxy.default = "http://proxy.inno.lan:3128";
+  #networking.proxy.default = "http://proxy.inno.lan:3128";
 
   virtualisation.docker.enable = true;
 
@@ -34,9 +33,10 @@
     wget 
     vim
     firefox
+    vlc
     zip
     git
-    (python36.withPackages(ps: with ps; [ numpy toolz pip ]))
+    (python36.withPackages(ps: with ps; [ numpy toolz pip requests virtualenvwrapper ]))
     haskellPackages.X11
     haskellPackages.xmobar
     haskellPackages.xmonad
@@ -52,6 +52,7 @@
     steam
     discord
     fzf
+    jq
   ];
 
   users.extraUsers.brandon = {

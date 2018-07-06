@@ -1,4 +1,6 @@
 {
+  allowUnfree = true;
+
   packageOverrides = super: let self = super.pkgs; in rec {
     eclipse-ee-47 = super.eclipses.buildEclipse {
       name = "eclipse-ee-4.7.2";
