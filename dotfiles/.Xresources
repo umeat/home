@@ -20,48 +20,34 @@ XTerm*VT100.cutNewLine: false
 XTerm*VT100.cutToBeginningOfLine: false
 XTerm*VT100.charClass: 33:48,35:48,37:48,42:48,45-47:48,64:48,95:48,126:48
 
-
-
 !xterm*dynamiccolors:      true
 !xterm*utf8:               2
 !xterm*geometry:           WINDOWGEOMETRY
 !xterm*visualBell:         off
 xterm*highlightSelection: true
 
-!Baskerville - Count Von Count
-*background:  #000000
-*foreground:  #919191
-
-
-! BLACK
-*color0:      #303030
-*color8:      #5E5E5E
-
-! WHITE
-*color7:      #C6C6C6
-*color15:     #FFFFFF
-
-! RED
-*color1:      #C10023
-*color9:      #FF8781
-
-! YELLOW
-*color3:      #B51D2C
-*color11:     #FF948B
-
-! GREEN
-*color2:      #A83334
-*color10:     #FFA095
-
-! CYAN
-*color6:      #9A413D
-*color14:     #FFAAA0
-
-! BLUE
-*color4:      #8C4B46
-*color12:     #FEB2AA
-
-! MAGENTA
-*color5:      #7D534F
-*color13:     #EBBBB5
-
+! XTerm*font: 9x15
+XTerm*faceName: Inconsolata
+XTerm*faceSize: 13
+XTerm*allowBoldFonts: false
+XTerm*boldMode: false
+XTerm*colorBDMode: true
+XTerm*foreground: #c5c8c6
+XTerm*background: #111111
+*cursorColor:  #aeafad
+*color0:       #000000
+*color1:       #912226
+*color2:       #778900
+*color3:       #ae7b00
+*color4:       #1d2594
+*color5:       #682a9b
+*color6:       #2b6651
+*color7:       #929593
+*color8:       #666666
+*color9:       #cc6666
+*color10:      #b5bd68
+*color11:      #f0c674
+*color12:      #81a2be
+*color13:      #b294bb
+*color14:      #8abeb7
+*color15:      #ecebec

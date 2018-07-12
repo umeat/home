@@ -14,6 +14,7 @@ call plug#begin()
  Plug 'tpope/vim-surround'
  Plug 'tpope/vim-eunuch'
  Plug 'scrooloose/nerdtree'
+ Plug 'chrisbra/Colorizer'
 call plug#end()
 
 " fzf source and map
@@ -23,10 +24,12 @@ nnoremap <Leader>p :FZF<CR>
 " eclim
 let g:EclimLoggingDisabled = 1
 let g:EclimMakeLCD = 1
+set completeopt-=preview
 
 " vim tabs
 map <C-t> :tabnew<CR>
 map <Tab> :tabnext<CR>
+map <S-Tab> :tabprevious<CR>
 
 " Nul is C-Space
 " switch between splits
@@ -53,3 +56,5 @@ function! Test()
 endfunction
 
 :command! Test :call Test()
+
+:command! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"

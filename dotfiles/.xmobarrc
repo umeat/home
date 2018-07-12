@@ -2,29 +2,29 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=12:medium:antialias=true"
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 100
-       , commands = [ Run Cpu ["-L","-1","-H","50","--normal","#FF8781","--high","#C10023"] 10
-                    , Run Memory ["-t","Memory: <fc=#FF8781><usedratio></fc>%"] 10
+       , commands = [ Run Cpu ["-L","-1","-H","50","--normal","#e1e1e1","--high","#C10023"] 10
+                    , Run Memory ["-t","Memory: <fc=#E1E1E1><usedratio></fc>%"] 10
                     , Run Network "wlp2s0" ["-t","Network: <rx>|<tx>","-S", "True"] 10
 		    , Run Battery
 			[ "--template" , "Battery: <acstatus>"
                         , "--Low"      , "10"        -- units: %
                         , "--High"     , "80"        -- units: %
                         , "--low"      , "#C10023"
-                        , "--normal"   , "#FF8781"
-                        , "--high"     , "#FF8781"
+                        , "--normal"   , "#E1E1E1"
+                        , "--high"     , "#E1E1E1"
                            -- battery specific options
                         , "--"
                            -- discharging status
                         , "-o", "<left>% (<timeleft>)"
                            -- AC "on" status
-                        , "-O", "<fc=#FF8781>Charging</fc>"
+                        , "-O", "<fc=#919191>Charging</fc>"
                            -- charged status
-                        , "-i", "<fc=#919191>Charged</fc>"
+                        , "-i", "<fc=#E1E1E1>Charged</fc>"
                         ] 50
                     , Run Date "%a %b %_d, %l:%M" "date" 10
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<fc=#FF8781>%StdinReader%</fc> }{ <fc=#919191>%wlp2s0%,  %cpu%,  %memory%,  %battery%,  %date%</fc>  "
+       , template = "<fc=#E1E1E1>%StdinReader%</fc> }{ <fc=#919191>%wlp2s0%,  %cpu%,  %memory%,  %battery%,  %date%</fc>  "
        }

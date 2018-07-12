@@ -11,6 +11,7 @@ import System.IO (hPutStrLn)
 main :: IO ()
 main = do
     xmproc <- spawnPipe "xmobar"
+    spawn "feh --bg-tile ~/.background.png"
     xmonad $ def
         { terminal = "xterm -sl 1000"
         , manageHook = manageDocks <+> manageHook def
@@ -20,7 +21,7 @@ main = do
         , logHook = dynamicLogWithPP xmobarPP
             { ppOutput = hPutStrLn xmproc
             , ppTitle = xmobarColor "grey" "" . shorten 53
-            , ppCurrent = wrap "<fc=#919191>[</fc>" "<fc=#919191>]</fc>" . xmobarColor "#FF8781" "" 
+            , ppCurrent = wrap "<fc=#919191>[</fc>" "<fc=#919191>]</fc>" . xmobarColor "#E1E1E1" "" 
             }
         , focusedBorderColor = "#1d1f21"
         , normalBorderColor = "#000000"
@@ -37,5 +38,5 @@ main = do
         , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
         , ((0, xK_Print), spawn "scrot /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
         , ((mod1Mask, xK_Print), spawn "scrot -s /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
+        , ((mod1Mask, xK_l), spawn "sudo slock")
         ]
-

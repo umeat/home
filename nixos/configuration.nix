@@ -53,6 +53,9 @@
     discord
     fzf
     jq
+    libnotify
+    notify-osd
+    lftp
   ];
 
   users.extraUsers.brandon = {
