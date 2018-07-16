@@ -38,5 +38,5 @@ main = do
         , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")
         , ("<Print>", spawn "scrot /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
         , ("M-<Print>", spawn "scrot -s /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
-        , ("M-l", spawn "sudo slock")
+        , ("M4-l", spawn "sudo slock")
         ]
