@@ -27,12 +27,11 @@ main = do
         , normalBorderColor = "#000000"
         , focusFollowsMouse = False
         } `additionalKeysP`
-        [
-        ("M-p", spawn "dmenu_run -fn inconsolata-18")
+        [ ("M-p", spawn "dmenu_run -fn inconsolata-18")
         , ("M-'", sendMessage ToggleStruts)
         , ("<XF86AudioMute>", spawn "amixer -q set Master toggle")
-        , ("<XF86AudioRaiseVolume>", spawn "amixer -q set Master 5%+")
-        , ("<XF86AudioLowerVolume>", spawn "amixer -q set Master 5%-")
+        , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +5%")
+        , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume 0 -5%")
         , ("<XF86AudioMicMute>", spawn "amixer -q set Capture toggle")
         , ("<XF86MonBrightnessUp>", spawn "xbacklight -inc 10")
         , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")
