@@ -16,7 +16,7 @@
 
   networking.hostName = "nosleep";
   networking.wireless.enable = true;
-  networking.proxy.default = "http://proxy.inno.lan:3128";
+  #networking.proxy.default = "http://proxy.inno.lan:3128";
 
   virtualisation.docker.enable = true;
 
@@ -92,8 +92,14 @@
       '';
     };
 
-    displayManager.slim.enable = true;
-    displayManager.slim.defaultUser = "brandon";
+    displayManager.slim = {
+      enable = true;
+      defaultUser = "brandon";
+      theme = pkgs.fetchurl {
+        url = "https://github.com/naglis/slim-minimal/archive/65759e026e8de1f957889e81ca6faf3b8c2167a7.tar.gz";
+        sha256 = "c6a4b674f281ee5a2b8227959a575f37db5a1c6cd332edf6326a730b4d10eac2";
+      };
+    };
 
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
