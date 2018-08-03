@@ -2,14 +2,14 @@
   allowUnfree = true;
 
   packageOverrides = super: let self = super.pkgs; in rec {
-    eclipse-ee-47 = super.eclipses.buildEclipse {
-      name = "eclipse-ee-4.7.2";
+    eclipse-ee-48 = super.eclipses.buildEclipse {
+      name = "eclipse-ee-4.8";
       description = "Eclipse EE IDE";
       sources = {
         "x86_64-linux" = super.fetchurl {
-          url = http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/oxygen/2/eclipse-jee-oxygen-2-linux-gtk-x86_64.tar.gz&r=1;
-          sha256 = "0qpbkbrnz8amhiz92xq179cfqnhhrp2dh2w456gbhgbf3v02npz3";
-          name = "eclipse-jee-oxygen-2-linux-gtk-x86_64.tar.gz";
+          url = https://www.eclipse.org/downloads/download.php?r=1&nf=1&file=/technology/epp/downloads/release/photon/R/eclipse-jee-photon-R-linux-gtk-x86_64.tar.gz;
+          sha256 = "1vnkzdn0vpaxn4mid0im8vnymyyia2cbmk8hvmii4palzr3h3l1v";
+          name = "eclipse-jee-photon-R-linux-gtk-x86_64.tar.gz";
         };
       };
     };
