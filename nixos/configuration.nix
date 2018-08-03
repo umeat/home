@@ -16,7 +16,7 @@
 
   networking.hostName = "nosleep";
   networking.wireless.enable = true;
-  #networking.proxy.default = "http://proxy.inno.lan:3128";
+  networking.proxy.default = "http://proxy.inno.lan:3128";
 
   virtualisation.docker.enable = true;
 
@@ -45,7 +45,7 @@
     xorg.xbacklight
     dmenu
     pulseaudioFull
-    eclipse-ee-47
+    eclipse-ee-48
     jdk8
     gcc
     gnumake
@@ -99,9 +99,8 @@
     windowManager.xmonad.enableContribAndExtras = true;
   };
 
-  #services.xserver = {
-  #  enable = true;
-  #  displayManager.sddm.enable = true;
-  #  desktopManager.plasma5.enable = true;
-  #};
+  system.autoUpgrade = {
+    enable = true;
+    dates = "9:30";
+  };
 }
