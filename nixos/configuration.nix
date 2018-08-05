@@ -56,6 +56,7 @@
     libnotify
     notify-osd
     lftp
+    rxvt_unicode
   ];
 
   users.extraUsers.brandon = {
