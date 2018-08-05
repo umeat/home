@@ -2,6 +2,7 @@ URxvt.scrollBar: false
 URxvt.font: xft:Source Code Pro for Powerline-10:pixelsize=17:hinting=True;antialias:True
 URxvt.boldFont: xft:Source Code Pro for Powerline-10:pixelsize=17:hinting=True;antialias:True
 URxvt.highlightSelection: true
+URxvt.perl-ext-common: selection-to-clipboard
 
 ! Fix ctrl moving through words
 URxvt*altSendsEscape: true
