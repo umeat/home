@@ -17,6 +17,9 @@ call plug#begin()
  Plug 'chrisbra/Colorizer'
 call plug#end()
 
+" yank to clipboard
+map Y "+y
+
 " fzf source and map
 set rtp+=~/.vim/plugged/fzf
 nnoremap <Leader>p :FZF<CR>
