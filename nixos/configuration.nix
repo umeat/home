@@ -16,7 +16,7 @@
 
   networking.hostName = "nosleep";
   networking.wireless.enable = true;
-  #networking.proxy.default = "http://proxy.inno.lan:3128";
+  networking.firewall.allowedTCPPorts = [ ];
 
   virtualisation.docker.enable = true;
 
@@ -36,12 +36,15 @@
     vlc
     zip
     git
-    (python36.withPackages(ps: with ps; [ numpy toolz pip requests virtualenvwrapper ]))
+    (python36.withPackages(ps: with ps; [ 
+      numpy toolz pip requests virtualenvwrapper
+    ]))
     haskellPackages.X11
     haskellPackages.xmobar
     haskellPackages.xmonad
     haskellPackages.xmonad-contrib
     haskellPackages.xmonad-extras
+    haskellPackages.ghcid
     xorg.xbacklight
     dmenu
     pulseaudioFull
@@ -50,6 +53,7 @@
     gcc
     gnumake
     steam
+    slack
     discord
     fzf
     jq
@@ -110,4 +114,15 @@
     enable = true;
     dates = "9:30";
   };
+
+  fonts = {
+    enableFontDir = true;
+    fonts = with pkgs; [
+    ];
+  };
+
+  nesting.clone = [{
+    networking.proxy.default = "http://proxy.inno.lan:3128";
+    networking.proxy.noProxy = "127.0.0.1,localhost";
+  }];
 }

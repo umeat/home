@@ -12,6 +12,10 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  hardware.bluetooth.enable = false;
+
+  hardware.opengl.enable = true;
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/200f0358-50b5-4811-8c2a-cb87227007d1";
       fsType = "ext4";
