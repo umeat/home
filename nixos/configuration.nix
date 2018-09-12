@@ -106,6 +106,8 @@
       };
     };
 
+    desktopManager.xterm.enable = false; # https://github.com/NixOS/nixpkgs/issues/21958
+
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
   };

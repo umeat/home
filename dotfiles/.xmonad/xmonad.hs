@@ -13,7 +13,8 @@ main = do
     xmproc <- spawnPipe "xmobar"
     spawn "~/.fehbg"
     xmonad $ def
-        { terminal = "xterm -sl 1000"
+        --{ terminal = "xterm -sl 1000"
+        { terminal = "urxvt"
         , manageHook = manageDocks <+> manageHook def
         , layoutHook = avoidStruts $ smartBorders $ layoutHook def
         , startupHook = setWMName "LG3D" -- java swing
@@ -38,4 +39,5 @@ main = do
         , ("<Print>", spawn "scrot /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
         , ("M-<Print>", spawn "scrot -s /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
         , ("M4-l", spawn "sudo slock")
+        , ("M-n", spawn "kill $(pgrep notify-osd)")
         ]
