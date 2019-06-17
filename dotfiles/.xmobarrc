@@ -1,13 +1,11 @@
-Config { font = "xft:Bitstream Vera Sans Mono:size=12:medium:antialias=true"
+Config { font = "xft:Bitstream Vera Sans Mono:size=10:medium:antialias=true"
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 100
        , commands = [ Run Cpu ["-L", "-1", "-H", "50", "--normal", "#e1e1e1", "--high", "#C10023"] 10
                     , Run Memory ["-t", "Memory: <fc=#E1E1E1><usedratio></fc>%"] 10
-                    , Run Network "wlp2s0" 
-                        [ "-t", "Network: <tx>|<rx>,"
-                        , "-S", "True"
-                        ] 10
+                    , Run Wireless "wlp2s0" [ "-t", "Wifi: <essid>," ] 10
+                    , Run Network "enp0s20f0u1u2i5" [ "-t", "Network: <dev>," ] 10
 		    , Run Battery
 			[ "--template" , "Battery: <acstatus>"
                         , "--Low"      , "10"        -- units: %
@@ -25,5 +23,5 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=12:medium:antialias=true"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<fc=#E1E1E1>%StdinReader%</fc> }{ <fc=#919191>%wlp2s0%  %cpu%,  %memory%,  %battery%,  %date%</fc>  "
+       , template = "<fc=#E1E1E1>%StdinReader%</fc> }{ <fc=#919191>%enp0s20f0u1u2i5%  %wlp2s0wi%  %cpu%,  %memory%,  %battery%,  %date%</fc>  "
        }

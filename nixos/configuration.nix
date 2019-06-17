@@ -6,6 +6,11 @@
       ./hardware-configuration.nix
     ];
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -27,53 +32,52 @@
 
   time.timeZone = "Australia/Canberra";
 
-  nixpkgs.config = import ./nixpkgs-config.nix;
-
   environment.systemPackages = with pkgs; [
-    wget 
-    vim
-    firefox
-    vlc
-    zip
-    git
-    (python36.withPackages(ps: with ps; [ 
-      numpy toolz pip requests virtualenvwrapper
-    ]))
+    (eclipses.eclipseWithPlugins {
+      eclipse = pkgs.eclipses.eclipse-java;
+      jvmArgs = [ "-javaagent:${pkgs.lombok}/share/java/lombok.jar" ];
+    })
     haskellPackages.X11
     haskellPackages.xmobar
     haskellPackages.xmonad
     haskellPackages.xmonad-contrib
     haskellPackages.xmonad-extras
     haskellPackages.ghcid
-    xorg.xbacklight
+    wget 
+    vim
+    firefox
+    vlc
+    zip
+    git
+    light
     dmenu
     pulseaudioFull
-    eclipse-ee-48
     jdk8
     gcc
     gnumake
-    steam
-    slack
-    discord
     fzf
     jq
     libnotify
     notify-osd
-    lftp
     rxvt_unicode
+    go
+    gotools
+    yarn
+    slack
   ];
 
   users.extraUsers.brandon = {
     password = "change-me";
     isNormalUser = true;
     home = "/home/brandon";
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "dialout" ];
   };
 
   system.stateVersion = "17.09";
 
   services.xserver = {
     enable = true;
+    videoDrivers = [ "ati" "cirrus" "vesa" "vmware" "modesetting" "displaylink" ];
 
     synaptics = {
       enable = true;
