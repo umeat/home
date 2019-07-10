@@ -4,7 +4,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.Gaps
 import XMonad.Layout.NoBorders
-import XMonad.Util.EZConfig (additionalKeysP)
+import XMonad.Util.EZConfig (additionalKeysP, additionalKeys)
 import XMonad.Util.Run (spawnPipe)
 import System.IO (hPutStrLn)
 import Graphics.X11.ExtraTypes.XF86
@@ -35,6 +35,7 @@ main = do
         , focusFollowsMouse = False
         } `additionalKeysP`
             [ ("M-p", spawn "dmenu_run -fn inconsolata-18")
+            , ("<XF86Open>", spawn "dmenu_run -fn inconsolata-18")
             , ("M-'", sendMessage ToggleStruts)
             , ("<XF86AudioMute>", spawn "amixer -q set Master toggle")
             , ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume 0 +5%")
@@ -47,4 +48,7 @@ main = do
             , ("M4-l", spawn "sudo slock")
             , ("M-n", spawn "kill $(pgrep notify-osd)")
             , ("C-q", spawn "") -- Disable ctrl-q for firefox ...
-            ]
+        ]
+        `additionalKeys`
+            [((0, xK_Find), spawn "dmenu_run -fn inconsolata-18")
+        ]
