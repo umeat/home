@@ -1,0 +1,10 @@
+{
+  "java.jdt.ls.vmargs": "-javaagent:/nix/store/avq6jpw0bx5crgj5qhfhkrnsh1rp8j4c-lombok-1.18.8/share/java/lombok.jar",
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  }
+}
