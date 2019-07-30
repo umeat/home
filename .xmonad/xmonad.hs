@@ -20,7 +20,7 @@ barPP = xmobarPP
 
 main :: IO ()
 main = do
-    spawn "~/.fehbg"
+    spawn "feh --bg-tile '/home/brandon/.wallpaper.jpg'"
     xmonad $ def
         { terminal = "urxvt"
         , manageHook = manageDocks <+> manageHook def
