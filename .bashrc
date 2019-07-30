@@ -1,4 +1,7 @@
-PATH=/home/brandon/bin:/home/brandon/.local/bin:$PATH
+stty werase undef
+bind '\C-w:unix-filename-rubout'
+
+PATH=/home/brandon/bin:/home/brandon/.local/bin:/home/brandon/go/bin:$PATH
 
 alias calc=qalculate-gtk
 alias vi=vim
@@ -21,3 +24,7 @@ function credstash() {
 export -f credstash
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export HISTCONTROL=ignoredups:erasedups
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
