@@ -30,19 +30,21 @@
     wheelNeedsPassword = false;
   };
 
+  # One day the scanner in the x1 will be supported, alas, not today
+  #services.fprintd.enable = true;
+
   time.timeZone = "Australia/Canberra";
+  services.ntp.enable = true;
 
   environment.systemPackages = with pkgs; [
-    (eclipses.eclipseWithPlugins {
-      eclipse = pkgs.eclipses.eclipse-java;
-      jvmArgs = [ "-javaagent:${pkgs.lombok}/share/java/lombok.jar" ];
-    })
     haskellPackages.X11
     haskellPackages.xmobar
     haskellPackages.xmonad
     haskellPackages.xmonad-contrib
     haskellPackages.xmonad-extras
     haskellPackages.ghcid
+    rxvt_unicode
+    dmenu
     wget 
     vim
     firefox
@@ -50,8 +52,11 @@
     zip
     git
     light
-    dmenu
     pulseaudioFull
+    (eclipses.eclipseWithPlugins {
+      eclipse = pkgs.eclipses.eclipse-java;
+      jvmArgs = [ "-javaagent:${pkgs.lombok}/share/java/lombok.jar" ];
+    })
     jdk8
     gcc
     gnumake
@@ -59,7 +64,8 @@
     jq
     libnotify
     notify-osd
-    rxvt_unicode
+    python36
+    python36Packages.pylint
     go
     gotools
     yarn
@@ -101,34 +107,18 @@
       '';
     };
 
-    displayManager.slim = {
+    displayManager.lightdm.greeters.mini = {
       enable = true;
-      defaultUser = "brandon";
-      theme = pkgs.fetchurl {
-        url = "https://github.com/naglis/slim-minimal/archive/65759e026e8de1f957889e81ca6faf3b8c2167a7.tar.gz";
-        sha256 = "c6a4b674f281ee5a2b8227959a575f37db5a1c6cd332edf6326a730b4d10eac2";
-      };
+      user = "brandon";
+      extraConfig = ''
+        [greeter]
+        show-password-label = true
+        [greeter-theme]
+        background-image = ""
+      '';
     };
-
-    desktopManager.xterm.enable = false; # https://github.com/NixOS/nixpkgs/issues/21958
 
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
   };
-
-  system.autoUpgrade = {
-    enable = true;
-    dates = "9:30";
-  };
-
-  fonts = {
-    enableFontDir = true;
-    fonts = with pkgs; [
-    ];
-  };
-
-  nesting.clone = [{
-    networking.proxy.default = "http://proxy.inno.lan:3128";
-    networking.proxy.noProxy = "127.0.0.1,localhost";
-  }];
 }
