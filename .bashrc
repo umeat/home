@@ -1,7 +1,7 @@
 stty werase undef
 bind '\C-w:unix-filename-rubout'
 
-PATH=/home/brandon/bin:/home/brandon/.local/bin:/home/brandon/go/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/go/bin:$PATH
 
 alias calc=qalculate-gtk
 alias vi=vim
