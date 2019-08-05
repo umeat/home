@@ -39,20 +39,18 @@
   environment.systemPackages = with pkgs; [
     haskellPackages.X11
     haskellPackages.xmobar
-    haskellPackages.xmonad
-    haskellPackages.xmonad-contrib
-    haskellPackages.xmonad-extras
     haskellPackages.ghcid
+    (ghc.withPackages (hp: [hp.xmonad hp.xmonad-contrib hp.xmonad-extras]))
     rxvt_unicode
     dmenu
+    pulseaudioFull
+    light
     wget 
     vim
     firefox
     vlc
     zip
     git
-    light
-    pulseaudioFull
     (eclipses.eclipseWithPlugins {
       eclipse = pkgs.eclipses.eclipse-java;
       jvmArgs = [ "-javaagent:${pkgs.lombok}/share/java/lombok.jar" ];
