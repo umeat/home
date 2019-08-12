@@ -18,11 +18,6 @@ set_prompt() {
 }
 PROMPT_COMMAND=set_prompt
 
-function credstash() {
-    "`which credstash`.py" $@
-}
-export -f credstash
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export HISTCONTROL=ignoredups:erasedups

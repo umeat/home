@@ -18,6 +18,7 @@ call plug#begin()
  Plug 'chrisbra/Colorizer'
  Plug 'reedes/vim-wordy'
  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+ Plug 'LnL7/vim-nix'
 call plug#end()
 
 " yank to clipboard
@@ -54,5 +55,8 @@ nnoremap <silent><C-Right> :<C-u>call search('\C\<\<Bar>\%(^\<Bar>[^'.g:camelcha
 inoremap <silent><C-Left> <C-o>:call search('\C\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%^','bW')<CR>
 inoremap <silent><C-Right> <C-o>:call search('\C\<\<Bar>\%(^\<Bar>[^'.g:camelchar.']\@<=\)['.g:camelchar.']\<Bar>['.g:camelchar.']\ze\%([^'.g:camelchar.']\&\>\@!\)\<Bar>\%$','W')<CR>
 
+" Jump to next COC diagnostic
 nmap <silent><C-N> <Plug>(coc-diagnostic-prev)
-nmap <silent><C-n> <Plug>(coc-diagnostic-next)
+
+" Sudo Write
+command! -nargs=0 Sw :w !sudo tee % > /dev/null
