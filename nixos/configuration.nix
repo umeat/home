@@ -1,10 +1,15 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
     ];
+
+  system.activationScripts.linkInterpreters = lib.mkBefore ''
+    mkdir -p /usr/local
+    ln -f -s /run/current-system/sw/bin/ /usr/local/
+  '';
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -21,7 +26,7 @@
 
   networking.hostName = "nosleep";
   networking.wireless.enable = true;
-  networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.allowedTCPPorts = [ 4200 ];
 
   virtualisation.docker.enable = true;
 
@@ -61,13 +66,14 @@
     fzf
     jq
     libnotify
-    notify-osd
-    python36
-    python36Packages.pylint
-    go
+    #notify-osd
+    python37
+    python37Packages.credstash
+    go_1_13
     gotools
     yarn
     slack
+    busybox
   ];
 
   users.extraUsers.brandon = {
@@ -81,28 +87,14 @@
 
   services.xserver = {
     enable = true;
+    #videoDrivers = config.services.xserver.videoDrivers.default ++ [ "displaylink" ];
     videoDrivers = [ "ati" "cirrus" "vesa" "vmware" "modesetting" "displaylink" ];
 
-    synaptics = {
+    libinput = {
       enable = true;
-      tapButtons = true;
-      fingersMap = [1 3 2];
-      horizTwoFingerScroll = true;
-      vertTwoFingerScroll = true;
-      scrollDelta = 107;
-      accelFactor = "0.1";
-      twoFingerScroll = true;
-
-      # palm detection
-      # https://askubuntu.com/questions/229311/synaptics-touchpad-solving-2-finger-problem-triggered-by-resting-palm/772103#772103
-      palmDetect = true;
-      palmMinWidth = 10;
-      palmMinZ = 0;
-      additionalOptions = ''
-        # https://askubuntu.com/a/772103
-        Option "AreaLeftEdge" "2000"
-        Option "AreaRightEdge" "5500"
-      '';
+      tapping = true;
+      naturalScrolling = false;
+      middleEmulation = true;
     };
 
     displayManager.lightdm.greeters.mini = {
@@ -119,4 +111,9 @@
     windowManager.xmonad.enable = true;
     windowManager.xmonad.enableContribAndExtras = true;
   };
+
+  fonts.fonts = with pkgs; [
+    source-code-pro
+    powerline-fonts
+  ];
 }

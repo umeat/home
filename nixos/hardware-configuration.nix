@@ -12,7 +12,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  hardware.bluetooth.enable = false;
+  hardware.bluetooth.enable = true;
 
   hardware.opengl.enable = true;
 

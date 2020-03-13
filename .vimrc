@@ -18,6 +18,7 @@ call plug#begin()
  Plug 'chrisbra/Colorizer'
  Plug 'reedes/vim-wordy'
  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
  Plug 'LnL7/vim-nix'
 call plug#end()
 
@@ -29,9 +30,9 @@ set rtp+=~/.vim/plugged/fzf
 nnoremap <Leader>p :FZF<CR>
 
 " vim tabs
-map <C-t> :tabnew<CR>
-map <Tab> :tabnext<CR>
-map <S-Tab> :tabprevious<CR>
+nnoremap <C-t> :tabnew<CR>
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprevious<CR>
 
 " Nul is C-Space
 " switch between splits
