@@ -35,12 +35,6 @@
     wheelNeedsPassword = false;
   };
 
-  # One day the scanner in the x1 will be supported, alas, not today
-  #services.fprintd.enable = true;
-
-  time.timeZone = "Australia/Canberra";
-  services.ntp.enable = true;
-
   environment.systemPackages = with pkgs; [
     haskellPackages.X11
     haskellPackages.xmobar
@@ -85,31 +79,40 @@
 
   system.stateVersion = "17.09";
 
-  services.xserver = {
-    enable = true;
-    #videoDrivers = config.services.xserver.videoDrivers.default ++ [ "displaylink" ];
-    videoDrivers = [ "ati" "cirrus" "vesa" "vmware" "modesetting" "displaylink" ];
+  time.timeZone = "Australia/Canberra";
 
-    libinput = {
+  services = {
+    ntp.enable = true;
+
+    # One day the scanner in the x1 will be supported, alas, not today
+    #fprintd.enable = true;
+
+    xserver = {
       enable = true;
-      tapping = true;
-      naturalScrolling = false;
-      middleEmulation = true;
-    };
+      #videoDrivers = config.services.xserver.videoDrivers.default ++ [ "displaylink" ];
+      videoDrivers = [ "ati" "cirrus" "vesa" "vmware" "modesetting" "displaylink" ];
 
-    displayManager.lightdm.greeters.mini = {
-      enable = true;
-      user = "brandon";
-      extraConfig = ''
-        [greeter]
-        show-password-label = true
-        [greeter-theme]
-        background-image = ""
-      '';
-    };
+      libinput = {
+        enable = true;
+        tapping = true;
+        naturalScrolling = false;
+        middleEmulation = true;
+      };
 
-    windowManager.xmonad.enable = true;
-    windowManager.xmonad.enableContribAndExtras = true;
+      displayManager.lightdm.greeters.mini = {
+        enable = true;
+        user = "brandon";
+        extraConfig = ''
+          [greeter]
+          show-password-label = true
+          [greeter-theme]
+          background-image = ""
+        '';
+      };
+
+      windowManager.xmonad.enable = true;
+      windowManager.xmonad.enableContribAndExtras = true;
+    };
   };
 
   fonts.fonts = with pkgs; [

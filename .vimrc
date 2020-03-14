@@ -20,6 +20,7 @@ call plug#begin()
  Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
  Plug 'LnL7/vim-nix'
+ Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 " yank to clipboard

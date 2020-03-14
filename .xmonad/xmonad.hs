@@ -2,7 +2,6 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
-import XMonad.Layout.Gaps
 import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig (additionalKeysP, additionalKeys)
 import XMonad.Util.Run (spawnPipe)
