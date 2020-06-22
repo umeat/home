@@ -1,5 +1,5 @@
 {
-    "java.jdt.ls.vmargs": "-javaagent:/nix/store/mnpkfqcxyx7if14bw3w8nvp8rddzds6q-lombok-1.18.10/share/java/lombok.jar",
+    "java.jdt.ls.vmargs": "-javaagent:/nix/store/cj3lf720mrm66gk6334fjs3qvn0g889i-lombok-1.18.10/share/java/lombok.jar",
     "languageserver": {
         "golang": {
             "command": "gopls",

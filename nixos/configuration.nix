@@ -16,6 +16,8 @@
     allowBroken = true;
   };
 
+  nix.useSandbox = false;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -61,13 +63,14 @@
     jq
     libnotify
     #notify-osd
-    python37
-    python37Packages.credstash
-    go_1_13
+    #python37
+    #python37Packages.credstash
+    go_1_14
     gotools
     yarn
     slack
     busybox
+    steam
   ];
 
   users.extraUsers.brandon = {
@@ -89,8 +92,8 @@
 
     xserver = {
       enable = true;
-      #videoDrivers = config.services.xserver.videoDrivers.default ++ [ "displaylink" ];
-      videoDrivers = [ "ati" "cirrus" "vesa" "vmware" "modesetting" "displaylink" ];
+      #videoDrivers = [ "ati" "cirrus" "vesa" "vmware" "modesetting" "displaylink" ];
+      videoDrivers = [ "intel" ];
 
       libinput = {
         enable = true;

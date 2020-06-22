@@ -17,10 +17,9 @@ call plug#begin()
  Plug 'scrooloose/nerdtree'
  Plug 'chrisbra/Colorizer'
  Plug 'reedes/vim-wordy'
- Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
- Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
  Plug 'LnL7/vim-nix'
- Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 " yank to clipboard
