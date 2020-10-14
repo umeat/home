@@ -18,7 +18,7 @@ call plug#begin()
  Plug 'chrisbra/Colorizer'
  Plug 'reedes/vim-wordy'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
  Plug 'LnL7/vim-nix'
 call plug#end()
 
@@ -30,7 +30,7 @@ set rtp+=~/.vim/plugged/fzf
 nnoremap <Leader>p :FZF<CR>
 
 " vim tabs
-nnoremap <C-t> :tabnew<CR>
+nnoremap <Leader>t :tabnew<CR>
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
 

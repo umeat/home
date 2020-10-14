@@ -1,4 +1,4 @@
-Config { font = "xft:Bitstream Vera Sans Mono:size=10:medium:antialias=true"
+Config { font = "xft:Bitstream Vera Sans Mono:size=9:medium:antialias=true"
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 100
@@ -18,10 +18,11 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=10:medium:antialias=true"
                         , "-O", "<fc=#919191>Charging</fc>"
                         , "-i", "<fc=#E1E1E1>Charged</fc>"
                         ] 50
-                    , Run Date "%a %b %_d, %l:%M" "date" 10
+                    , Run DateZone "%a %b %_d (%j), %H:%M %z" "" "" "date" 10
                     , Run StdinReader
+                    -- , Run Com "echo" ["-n", ""] "oop" 5 -- similar to CommandReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<fc=#E1E1E1>%StdinReader%</fc> }{ <fc=#919191>%enp0s31f6%  %wlp2s0wi%  %cpu%,  %memory%,  %battery%,  %date%</fc>  "
+       , template = "<fc=#E1E1E1>%StdinReader%</fc> } { <fc=#919191>%enp0s31f6%  %wlp2s0wi%  %cpu%,  %memory%,  %battery%,  %date%</fc>  "
        }

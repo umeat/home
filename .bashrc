@@ -5,7 +5,7 @@ export PATH=$HOME/.local/bin:$HOME/go/bin:$PATH
 
 alias calc=qalculate-gtk
 alias vi=vim
-alias ssh="ssh -o ServerAliveInterval=60"
+alias ssh='ssh -o ServerAliveInterval=60'
 alias please='sudo $(fc -ln -1)'
 
 export EDITOR=vim
