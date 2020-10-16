@@ -8,13 +8,13 @@ Config { font = "xft:Bitstream Vera Sans Mono:size=9:medium:antialias=true"
                     , Run Network "enp0s31f6" [ "-t", "Network: <dev>," ] 10
 		    , Run Battery
 			[ "--template" , "Battery: <acstatus>"
-                        , "--Low"      , "10"        -- units: %
-                        , "--High"     , "80"        -- units: %
+                        , "--Low"      , "10"
+                        , "--High"     , "80"
                         , "--low"      , "#C10023"
                         , "--normal"   , "#E1E1E1"
                         , "--high"     , "#E1E1E1"
                         , "--"
-                        , "-o", "<left>%"
+                        , "-o", "<left><fc=#919191>%</fc>"
                         , "-O", "<fc=#919191>Charging</fc>"
                         , "-i", "<fc=#E1E1E1>Charged</fc>"
                         ] 50

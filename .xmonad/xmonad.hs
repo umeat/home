@@ -32,7 +32,7 @@ main = do
         , focusedBorderColor = "#1d1f21"
         , normalBorderColor = "#000000"
         , focusFollowsMouse = False
-        , modMask = mod4Mask
+        , modMask = mod4Mask -- Windows / Command key
         } `additionalKeysP`
             [ ("M-p", spawn "dmenu_run -fn inconsolata-18")
             , ("<XF86Open>", spawn "dmenu_run -fn inconsolata-18")
@@ -44,8 +44,8 @@ main = do
             , ("<XF86MonBrightnessUp>", spawn "sudo light -A 10")
             , ("<XF86MonBrightnessDown>", spawn "sudo light -U 10")
             , ("<Print>", spawn "scrot /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
-            , ("M4-<Print>", spawn "scrot -s /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
-            , ("M4-S-l", spawn "sudo slock")
+            , ("M-<Print>", spawn "scrot -s /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
+            , ("M-S-l", spawn "sudo slock")
             , ("M-n", spawn "kill $(pgrep notify-osd)")
             , ("C-q", spawn "") -- Disable ctrl-q for firefox ...
         ]
