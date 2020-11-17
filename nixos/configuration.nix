@@ -32,6 +32,9 @@
 
   virtualisation.docker.enable = true;
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "brandon" ];
+
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
@@ -53,19 +56,16 @@
     vlc
     zip
     git
-    (eclipses.eclipseWithPlugins {
-      eclipse = pkgs.eclipses.eclipse-java;
-      jvmArgs = [ "-javaagent:${pkgs.lombok}/share/java/lombok.jar" ];
-    })
-    jdk8
+    #(eclipses.eclipseWithPlugins {
+    #  eclipse = pkgs.eclipses.eclipse-java;
+    #  jvmArgs = [ "-javaagent:${pkgs.lombok}/share/java/lombok.jar" ];
+    #})
+    #jdk8
     gcc
     gnumake
     fzf
     jq
     libnotify
-    #notify-osd
-    #python37
-    #python37Packages.credstash
     go_1_14
     gotools
     yarn
@@ -83,7 +83,6 @@
   system.stateVersion = "17.09";
 
   time.timeZone = "Australia/Canberra";
-  #time.timeZone = "UTC";
 
   services.ntp.enable = true;
 
@@ -121,6 +120,8 @@
     source-code-pro
     powerline-fonts
   ];
+
+  services.tailscale.enable = true;
 
   # Router
   #networking.firewall.enable = false;
