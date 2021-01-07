@@ -43,8 +43,8 @@ main = do
             , ("<XF86AudioMicMute>", spawn "amixer -q set Capture toggle")
             , ("<XF86MonBrightnessUp>", spawn "sudo light -A 10")
             , ("<XF86MonBrightnessDown>", spawn "sudo light -U 10")
-            , ("<Print>", spawn "scrot /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
-            , ("M-<Print>", spawn "scrot -s /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
+            , ("<Print>", spawn "scrot -o /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
+            , ("M-<Print>", spawn "scrot -s -o /tmp/selection.png && xclip -selection clipboard -t image/png -i /tmp/selection.png")
             , ("M-S-l", spawn "sudo slock")
             , ("M-n", spawn "kill $(pgrep notify-osd)")
             , ("C-q", spawn "") -- Disable ctrl-q for firefox ...

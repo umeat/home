@@ -16,6 +16,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # For bluetooth headset
   hardware.pulseaudio = {
     enable = true;
     support32Bit = true;
@@ -28,17 +29,26 @@
 
   networking.hostName = "nosleep";
   networking.wireless.enable = true;
+
+  # GA timeserver
   networking.timeServers = options.networking.timeServers.default ++ [ "10.11.16.1" ];
 
   virtualisation.docker.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "brandon" ];
+  #virtualisation.virtualbox.host.enable = true;
+  #users.extraGroups.vboxusers.members = [ "brandon" ];
 
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
   };
+
+  #services.grafana = {
+  #  enable   = true;
+  #  port     = 3000;
+  #  domain   = "localhost";
+  #  protocol = "http";
+  #};
 
   environment.systemPackages = with pkgs; [
     haskellPackages.X11
@@ -47,30 +57,59 @@
     (ghc.withPackages (hp: [hp.xmonad hp.xmonad-contrib hp.xmonad-extras]))
     rxvt_unicode
     dmenu
-    pulseaudioFull
     pavucontrol
+    pulseaudioFull
     light
-    wget 
-    vim
+    libnotify
+    feh
+    scrot
+    slock
+    xclip
+    xsel
+
     google-chrome
+    slack
     vlc
-    zip
+    imv
+    teams
+    zoom-us
+    drawio
+    wireshark
+
+    kubectl
+    awscli2
+    ssm-session-manager-plugin
+    vim
     git
+    zip
+    gcc
+    gnumake
+    fzf
+    jq
+    wget
+    busybox
+    htop
+    lftp
+    nmap
+    tcpdump
+    traceroute
+    telnet
+    (haskell.lib.doJailbreak haskellPackages.gamgee)
+    vulnix
+    nix-index
+    python37Packages.credstash
+    shellcheck
+
     #(eclipses.eclipseWithPlugins {
     #  eclipse = pkgs.eclipses.eclipse-java;
     #  jvmArgs = [ "-javaagent:${pkgs.lombok}/share/java/lombok.jar" ];
     #})
     #jdk8
-    gcc
-    gnumake
-    fzf
-    jq
-    libnotify
-    go_1_14
+    jetbrains.goland
+    go_1_15
+    gopls
     gotools
-    yarn
-    slack
-    busybox
+    nodejs # for coc.nvim
   ];
 
   users.extraUsers.brandon = {
@@ -84,8 +123,6 @@
 
   time.timeZone = "Australia/Canberra";
 
-  services.ntp.enable = true;
-
   # One day the scanner in the x1 will be supported, alas, not today
   #services.fprintd.enable = true;
 
@@ -97,7 +134,7 @@
     libinput = {
       enable = true;
       tapping = true;
-      naturalScrolling = false;
+      naturalScrolling = true;
       middleEmulation = true;
     };
 
