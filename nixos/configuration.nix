@@ -128,8 +128,8 @@
 
   services.xserver = {
     enable = true;
-    #videoDrivers = [ "ati" "cirrus" "vesa" "vmware" "modesetting" "displaylink" ];
-    videoDrivers = [ "intel" ];
+    videoDrivers = [ "modesetting" "displaylink" ];
+    #videoDrivers = [ "intel" ];
 
     libinput = {
       enable = true;
