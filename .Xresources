@@ -2,7 +2,11 @@ URxvt.scrollBar: false
 URxvt.font: xft:Source Code Pro for Powerline-10:pixelsize=17:hinting=True;antialias:True
 URxvt.boldFont: xft:Source Code Pro for Powerline-10:pixelsize=17:hinting=True;antialias:True
 URxvt.highlightSelection: true
-URxvt.perl-ext-common: selection-to-clipboard
+URxvt.perl-ext-common: resize-font,selection-to-clipboard
+
+! Disable keycap picture insert mode
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 ! Fix ctrl moving through words
 URxvt*altSendsEscape: true

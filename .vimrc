@@ -1,6 +1,5 @@
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 syntax enable
-colorscheme pablo 
 highlight clear SignColumn
 set incsearch hlsearch
 set nowrap
@@ -8,10 +7,10 @@ set backspace=2
 set updatetime=300
 
 call plug#begin()
+ Plug 'tpope/vim-fugitive'
  Plug 'diepm/vim-rest-console'
  Plug 'junegunn/fzf'
  Plug 'itchyny/lightline.vim'
- Plug 'tpope/vim-fugitive'
  Plug 'tpope/vim-surround'
  Plug 'tpope/vim-eunuch'
  Plug 'scrooloose/nerdtree'
@@ -20,10 +19,14 @@ call plug#begin()
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
  Plug 'LnL7/vim-nix'
+ Plug 'hashivim/vim-terraform'
+ Plug 'stephpy/vim-yaml'
+ Plug 'joshdick/onedark.vim'
+ Plug 'logico/typewriter'
+ Plug 'ajgrf/parchment'
 call plug#end()
 
-" yank to clipboard
-map Y "+y
+colorscheme Tomorrow-Night
 
 " fzf source and map
 set rtp+=~/.vim/plugged/fzf

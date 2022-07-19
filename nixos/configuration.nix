@@ -1,4 +1,4 @@
-{ lib, pkgs, options, ... }:
+{ lib, pkgs, options, config, ... }:
 
 {
   imports =
@@ -11,24 +11,43 @@
     allowBroken = true;
   };
 
-  nix.useSandbox = false;
+  nix.settings.sandbox = false;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # For bluetooth headset
   hardware.pulseaudio = {
     enable = true;
     support32Bit = true;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
+    #extraModules = [ pkgs.pulseaudio-modules-bt ];
     package = pkgs.pulseaudioFull;
+    # This doesn't seem to actually get written to the config file
+    daemon.config = {
+      avoid-resampling = "true";
+      default-sample-rate = "48000";
+    };
   };
-  services.blueman.enable = true;
+
+  # Better audio codecs for bluetooth devices
+  #security.rtkit.enable = true;
+  #services.pipewire = {
+  #  enable = true;
+  #  alsa.enable = true;
+  #  alsa.support32Bit = true;
+  #  pulse.enable = true;
+  #};
 
   hardware.opengl.driSupport32Bit = true;
 
+  # For k3d cgroups issue
+  systemd.enableUnifiedCgroupHierarchy = false;
+
   networking.hostName = "nosleep";
   networking.wireless.enable = true;
+  networking.wireless.interfaces = ["wlp2s0"];
 
   # GA timeserver
   networking.timeServers = options.networking.timeServers.default ++ [ "10.11.16.1" ];
@@ -43,19 +62,11 @@
     wheelNeedsPassword = false;
   };
 
-  #services.grafana = {
-  #  enable   = true;
-  #  port     = 3000;
-  #  domain   = "localhost";
-  #  protocol = "http";
-  #};
-
   environment.systemPackages = with pkgs; [
     haskellPackages.X11
     haskellPackages.xmobar
     haskellPackages.ghcid
     (ghc.withPackages (hp: [hp.xmonad hp.xmonad-contrib hp.xmonad-extras]))
-    rxvt_unicode
     dmenu
     pavucontrol
     pulseaudioFull
@@ -66,6 +77,7 @@
     slock
     xclip
     xsel
+    rxvt-unicode
 
     google-chrome
     slack
@@ -75,6 +87,7 @@
     zoom-us
     drawio
     wireshark
+    wineWowPackages.stable
 
     kubectl
     awscli2
@@ -93,20 +106,14 @@
     nmap
     tcpdump
     traceroute
-    telnet
+    inetutils
     (haskell.lib.doJailbreak haskellPackages.gamgee)
-    vulnix
     nix-index
     python37Packages.credstash
     shellcheck
 
-    #(eclipses.eclipseWithPlugins {
-    #  eclipse = pkgs.eclipses.eclipse-java;
-    #  jvmArgs = [ "-javaagent:${pkgs.lombok}/share/java/lombok.jar" ];
-    #})
-    #jdk8
-    jetbrains.goland
-    go_1_15
+    #jetbrains.goland
+    go_1_18
     gopls
     gotools
     nodejs # for coc.nvim
@@ -133,9 +140,11 @@
 
     libinput = {
       enable = true;
-      tapping = true;
-      naturalScrolling = true;
-      middleEmulation = true;
+      touchpad = {
+        tapping = true;
+        naturalScrolling = true;
+        middleEmulation = true;
+      };
     };
 
     displayManager.lightdm.greeters.mini = {
@@ -146,6 +155,7 @@
         show-password-label = true
         [greeter-theme]
         background-image = ""
+        window-color = "#65b6e6"
       '';
     };
 
@@ -158,7 +168,7 @@
     powerline-fonts
   ];
 
-  services.tailscale.enable = true;
+  #services.tailscale.enable = true;
 
   # Router
   #networking.firewall.enable = false;

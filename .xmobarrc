@@ -1,5 +1,5 @@
 Config { font = "xft:Bitstream Vera Sans Mono:size=9:medium:antialias=true"
-       , bgColor = "black"
+       , bgColor = "#1e1e1e"
        , fgColor = "grey"
        , position = TopW L 100
        , commands = [ Run Cpu ["-L", "-1", "-H", "50", "--normal", "#e1e1e1", "--high", "#C10023"] 10
