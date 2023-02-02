@@ -31,15 +31,6 @@
     };
   };
 
-  # Better audio codecs for bluetooth devices
-  #security.rtkit.enable = true;
-  #services.pipewire = {
-  #  enable = true;
-  #  alsa.enable = true;
-  #  alsa.support32Bit = true;
-  #  pulse.enable = true;
-  #};
-
   hardware.opengl.driSupport32Bit = true;
 
   # For k3d cgroups issue
@@ -49,13 +40,7 @@
   networking.wireless.enable = true;
   networking.wireless.interfaces = ["wlp2s0"];
 
-  # GA timeserver
-  networking.timeServers = options.networking.timeServers.default ++ [ "10.11.16.1" ];
-
   virtualisation.docker.enable = true;
-
-  #virtualisation.virtualbox.host.enable = true;
-  #users.extraGroups.vboxusers.members = [ "brandon" ];
 
   security.sudo = {
     enable = true;
@@ -88,6 +73,7 @@
     drawio
     wireshark
     wineWowPackages.stable
+    obsidian
 
     kubectl
     awscli2
@@ -109,12 +95,11 @@
     inetutils
     (haskell.lib.doJailbreak haskellPackages.gamgee)
     nix-index
-    python37Packages.credstash
+    #python37Packages.credstash
     shellcheck
 
     #jetbrains.goland
-    go_1_18
-    gopls
+    go_1_19
     gotools
     nodejs # for coc.nvim
   ];
@@ -135,8 +120,9 @@
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "modesetting" "displaylink" ];
-    #videoDrivers = [ "intel" ];
+    #videoDrivers = [ "modesetting" "displaylink" ];
+    videoDrivers = [ "intel" ];
+    #videoDrivers = [ "nvidia" ];
 
     libinput = {
       enable = true;
@@ -170,7 +156,12 @@
 
   #services.tailscale.enable = true;
 
-  # Router
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 51001 52001 51005 52005 ];
+  };
+
+  # Router - NAT from ethernet interface to wireless
   #networking.firewall.enable = false;
   #networking.nat.enable = true;
   #networking.nat.internalIPs = [ "192.168.1.0/24" ];

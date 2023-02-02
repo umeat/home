@@ -21,7 +21,6 @@ call plug#begin()
  Plug 'LnL7/vim-nix'
  Plug 'hashivim/vim-terraform'
  Plug 'stephpy/vim-yaml'
- Plug 'joshdick/onedark.vim'
  Plug 'logico/typewriter'
  Plug 'ajgrf/parchment'
 call plug#end()
@@ -64,3 +63,5 @@ nmap <silent><C-N> <Plug>(coc-diagnostic-prev)
 
 " Sudo Write
 command! -nargs=0 Sw :w !sudo tee % > /dev/null
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
