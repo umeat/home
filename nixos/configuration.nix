@@ -11,6 +11,8 @@
     allowBroken = true;
   };
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   nix.settings.sandbox = false;
 
   boot.loader.systemd-boot.enable = true;
@@ -24,11 +26,6 @@
     support32Bit = true;
     #extraModules = [ pkgs.pulseaudio-modules-bt ];
     package = pkgs.pulseaudioFull;
-    # This doesn't seem to actually get written to the config file
-    daemon.config = {
-      avoid-resampling = "true";
-      default-sample-rate = "48000";
-    };
   };
 
   hardware.opengl.driSupport32Bit = true;
@@ -39,6 +36,12 @@
   networking.hostName = "nosleep";
   networking.wireless.enable = true;
   networking.wireless.interfaces = ["wlp2s0"];
+
+  nixpkgs.config.packageOverrides = pkgs: rec {
+    wpa_supplicant = pkgs.wpa_supplicant.overrideAttrs (attrs: {
+      patches = attrs.patches ++ [ ./eduroam.patch ];
+    });
+  };
 
   virtualisation.docker.enable = true;
 
@@ -56,7 +59,7 @@
     pavucontrol
     pulseaudioFull
     light
-    libnotify
+    #libnotify
     feh
     scrot
     slock
@@ -68,10 +71,8 @@
     slack
     vlc
     imv
-    teams
     zoom-us
     drawio
-    wireshark
     wineWowPackages.stable
     obsidian
 
@@ -79,10 +80,9 @@
     awscli2
     ssm-session-manager-plugin
     vim
+    neovim
     git
     zip
-    gcc
-    gnumake
     fzf
     jq
     wget
@@ -95,10 +95,8 @@
     inetutils
     (haskell.lib.doJailbreak haskellPackages.gamgee)
     nix-index
-    #python37Packages.credstash
     shellcheck
 
-    #jetbrains.goland
     go_1_19
     gotools
     nodejs # for coc.nvim
@@ -122,7 +120,6 @@
     enable = true;
     #videoDrivers = [ "modesetting" "displaylink" ];
     videoDrivers = [ "intel" ];
-    #videoDrivers = [ "nvidia" ];
 
     libinput = {
       enable = true;
@@ -156,10 +153,10 @@
 
   #services.tailscale.enable = true;
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 51001 52001 51005 52005 ];
-  };
+  #networking.firewall = {
+  #  enable = true;
+  #  allowedTCPPorts = [ ];
+  #};
 
   # Router - NAT from ethernet interface to wireless
   #networking.firewall.enable = false;
