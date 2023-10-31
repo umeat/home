@@ -6,10 +6,10 @@ set incsearch hlsearch
 set nowrap
 set backspace=2
 set updatetime=300
-
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+set mouse=
 
 call plug#begin('~/.vim/plugged')
+" Plug 'github/copilot.vim', {'branch': 'main'}
  Plug 'diepm/vim-rest-console'
  Plug 'junegunn/fzf'
  Plug 'itchyny/lightline.vim'
@@ -22,6 +22,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+ Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " fzf source and map
@@ -35,6 +36,7 @@ set completeopt-=preview
 
 " vim tabs
 map <C-t> :tabnew<CR>
+map <Leader>t :tabnew<CR>
 map <Tab> :tabnext<CR>
 map <S-Tab> :tabprevious<CR>
 
@@ -52,3 +54,9 @@ let g:lightline = {
       \ }
 
 :command! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+
+" Jump to next COC diagnostic
+nmap <silent><C-N> <Plug>(coc-diagnostic-prev)
+
+" Enter selects COC autocomplete suggestion
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"

@@ -59,7 +59,8 @@
     pavucontrol
     pulseaudioFull
     light
-    #libnotify
+    libnotify
+    dunst
     feh
     scrot
     slock
@@ -93,11 +94,12 @@
     tcpdump
     traceroute
     inetutils
-    (haskell.lib.doJailbreak haskellPackages.gamgee)
+    #(haskell.lib.doJailbreak haskellPackages.gamgee)
     nix-index
     shellcheck
 
     go_1_19
+    gopls
     gotools
     nodejs # for coc.nvim
   ];
@@ -146,7 +148,7 @@
     windowManager.xmonad.enableContribAndExtras = true;
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     source-code-pro
     powerline-fonts
   ];
